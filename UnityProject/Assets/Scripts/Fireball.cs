@@ -25,7 +25,7 @@ public class Fireball : MonoBehaviour
         PlayerCharacter player = other.GetComponent<PlayerCharacter>();
 
         if (player != null)
-            player.Health -= _damage;
+            player.Lives -= _damage;
 
         Destroy(gameObject);
     }
