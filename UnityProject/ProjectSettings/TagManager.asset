@@ -10,6 +10,7 @@ TagManager:
   - DeathZone
   - Pineapple
   - LargePineapple
+  - ShockJump
   layers:
   - Default
   - TransparentFX

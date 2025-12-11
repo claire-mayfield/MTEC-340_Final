@@ -14,6 +14,8 @@ public class FPSInput : MonoBehaviour
 	
 	public static bool AllowMovement;
 	
+	public static bool AllowShockJump;
+	
 	
 	
     float _verticalVelocity;
@@ -64,8 +66,6 @@ public class FPSInput : MonoBehaviour
 	            _verticalVelocity +=_gravity * 3.0f * Time.deltaTime;
 	        }
 
-	        Debug.Log(_verticalVelocity);
-
 
 	        // Apply gravity after X and Z have been clamped
 	        movement.y = _verticalVelocity;
@@ -79,7 +79,9 @@ public class FPSInput : MonoBehaviour
 	        // Move!
 	        _controller.Move(movement);
 			
+			
 		}
         
     }
+	
 }
