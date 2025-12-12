@@ -10,9 +10,6 @@ public class Manager : MonoBehaviour
 	
 	[SerializeField] private int _startingSnails = 0;
 	
-	// Prefab for spawning Star upon collecting all the Snails
-	[SerializeField] private GameObject _starPrefab;
-	
 	// UI Texts for Crystals, Snails, and Stars
 	[SerializeField] private TMP_Text _crystalsText;
 	[SerializeField] private TMP_Text _snailsText;
@@ -25,6 +22,8 @@ public class Manager : MonoBehaviour
 	[SerializeField] private int _crystalsToWin = 100;
 	[SerializeField] private int _snailsToWin = 5; 
 	[SerializeField] private int _starsToWin = 10;
+	
+	public KeyCode ExitGame;
 	
 	// Tracking Crystals
 	private int _scoreCrystals = 0;
@@ -155,15 +154,9 @@ public class Manager : MonoBehaviour
 		// Collectible Scores
 		if (ScoreSnails == _snailsToWin)
 		{
-			// win sound effect
-			// instantiate star prefab
 			
 			_snailsText.text = "You've collected all the snails! Snails : " + _snailsToWin + "/" + _snailsToWin;
 			
-			// GameObject newSnakeBodySegment = Instantiate(
-			// _starPrefab,
-			// Vector3.zero,
-			// Quaternion.identity);ww
 			
 		}
 		
@@ -197,19 +190,14 @@ public class Manager : MonoBehaviour
 			
 			_winText.text = "You've won the game! Thank you for playing!";
 			
-			// if (PlayerCharacter.Lives >= 12)
-			// {
-				// Rank A
-			
-			// }
-			
-			// if (PlayerCharacter.Lives >= 10)
-			// {
-				// Rank B
-			
-		//	}
 			
 		}
+		
+        if (Input.GetKey(ExitGame))
+        {
+            Application.Quit();
+        }
+		
 		
         
     }
