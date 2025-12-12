@@ -10,6 +10,8 @@ public class PlayerCharacter : MonoBehaviour
 	// UI Texts for Win Game, Game Over, and Lives
 	[SerializeField] private TMP_Text _gameOverText;
 	[SerializeField] private TMP_Text _livesText;
+	[SerializeField] private TMP_Text _informationText;
+	[SerializeField] private TMP_Text _jumpIncreaseInstructions;
 	
 	[SerializeField] private int _maxLives = 8;
 	
@@ -46,6 +48,8 @@ public class PlayerCharacter : MonoBehaviour
 		
 		// Make win and lose texts invisible
 		_gameOverText.text = " ";
+		_informationText.text = " ";
+		_jumpIncreaseInstructions.text = " ";
 		
 		// Set number of lives to max number of lives
 		Lives = _maxLives;
@@ -58,6 +62,13 @@ public class PlayerCharacter : MonoBehaviour
 		if (other.gameObject.CompareTag("Cactus"))
 		{
 			Lives = Lives -1;
+			Debug.Log("Ouch! You hit a cactus :(");
+			
+		}
+		
+		if (other.gameObject.CompareTag("Enemy"))
+		{
+			Lives = Lives -2;
 			Debug.Log("Ouch! You hit a cactus :(");
 			
 		}
@@ -83,6 +94,28 @@ public class PlayerCharacter : MonoBehaviour
 			_maxLives = _maxLives +2;
 			Lives = _maxLives;
 			Debug.Log("Max Lives Increased!");
+			
+		}
+		
+		// Instruction text
+		
+		if (other.gameObject.CompareTag("IncreaseJumpText"))
+		{
+			_informationText.text = "You've increased your jump height!";
+			
+		}
+		
+		if (other.gameObject.CompareTag("JumpIncreaseInstructions"))
+		{
+			_jumpIncreaseInstructions.text = "Press H increase your jump height, and press N to return to a normal jump height. If you ever forget, just return here!";
+			
+		}
+		
+		// Remove instruction text
+		if (other.gameObject.CompareTag("RemoveText"))
+		{
+			_informationText.text = " ";
+			_jumpIncreaseInstructions.text = " ";
 			
 		}
 

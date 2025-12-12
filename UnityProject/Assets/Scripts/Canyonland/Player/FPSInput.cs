@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 [AddComponentMenu("Control Scripts/FPS Input")]
@@ -12,9 +13,16 @@ public class FPSInput : MonoBehaviour
 
     [SerializeField] float _jumpSpeed = 15.0f;
 	
+	[SerializeField] private TMP_Text _notReady;
+	
 	public static bool AllowMovement;
 	
 	public static bool AllowShockJump;
+	
+	public bool AllowJumpIncrease;
+	
+	public KeyCode HighJump;
+	public KeyCode NormalJump;
 	
 	
 	
@@ -25,6 +33,7 @@ public class FPSInput : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
 		AllowMovement = true;
+		_notReady.text = " ";
 
     }
 
@@ -81,7 +90,51 @@ public class FPSInput : MonoBehaviour
 			
 			
 		}
+		
+		if (AllowJumpIncrease == true)
+		{
+			if (Input.GetKey(HighJump))
+			{
+				_jumpSpeed = 35;
+			}
+			
+			if (Input.GetKey(NormalJump))
+			{
+				_jumpSpeed = 20;
+			}
+			
+		}
         
     }
+	
+	void OnTriggerEnter(Collider other)
+	{
+		// Obstacle Collisions
+		if (other.gameObject.CompareTag("IncreaseJump"))
+		{
+			Debug.Log("Jump height increased");
+			AllowJumpIncrease = true;
+			
+		}
+		
+		if (other.gameObject.CompareTag("NotReady"))
+		{
+			if (AllowJumpIncrease == false)
+			{
+				Debug.Log("Come back with a greater jump height...");
+				_notReady.text = "Come back later when you have more power...";
+				
+			}
+			
+		}
+		
+		if (other.gameObject.CompareTag("RemoveText"))
+		{
+				_notReady.text = " ";
+			
+		}
+		
+
+	}
 	
 }

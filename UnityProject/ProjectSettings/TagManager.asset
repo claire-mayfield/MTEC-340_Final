@@ -18,6 +18,11 @@ TagManager:
   - WatchOut
   - LookForPineapples
   - TutorialComplete
+  - Enemy
+  - IncreaseJump
+  - IncreaseJumpText
+  - JumpIncreaseInstructions
+  - NotReady
   layers:
   - Default
   - TransparentFX
