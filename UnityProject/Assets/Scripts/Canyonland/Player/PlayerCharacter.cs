@@ -88,15 +88,6 @@ public class PlayerCharacter : MonoBehaviour
 
 	}
 	
-	// void Restart()
-	// {
-		// _maxLives = 4;
-		// _gameOverText.text = " ";
-		// Lives = _maxLives;
-		// FPSInput.AllowMovement = true;
-		
-	// }
-	
 	void Update()
 	{
 		//  Player Death
@@ -113,11 +104,6 @@ public class PlayerCharacter : MonoBehaviour
 			Lives = _maxLives;
 		}
 		
-		// Restart Game
-		// if (Input.GetKey(RestartGame))
-		// {
-			// Restart();
-		// }
 	}
 
     

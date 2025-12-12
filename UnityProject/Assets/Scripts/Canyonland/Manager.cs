@@ -8,6 +8,8 @@ public class Manager : MonoBehaviour
 {
 	public static Manager Instance;
 	
+	[SerializeField] private int _startingSnails = 0;
+	
 	// Prefab for spawning Star upon collecting all the Snails
 	[SerializeField] private GameObject _starPrefab;
 	
@@ -103,9 +105,6 @@ public class Manager : MonoBehaviour
 	// Remove Text
 	public KeyCode RemoveText;
 	
-	// Reload Scene
-	public KeyCode ReloadScene;
-	
 	// Audio
 	[SerializeField] private AudioResource _gameOverSound;
 	private AudioSource _source;
@@ -131,15 +130,6 @@ public class Manager : MonoBehaviour
             Debug.Log("Duplicate instance found and deleted...");
         }
 		
-		_source = GetComponent<AudioSource>();
-		
-		// Set the score for number of Crystals, Snails, and Stars
-		ScoreCrystals = 0;
-		ScoreSnails = 0;
-		ScoreStars = 0;
-		
-		// Make Win Text invisible
-		_winText.text = " ";
     }
 	
   
@@ -150,7 +140,7 @@ public class Manager : MonoBehaviour
 		
 		// Set the score for number of Crystals, Snails, and Stars
 		ScoreCrystals = 0;
-		ScoreSnails = 0;
+		ScoreSnails = _startingSnails;
 		ScoreStars = 0;
 		
 		// Make Win Text invisible
@@ -161,11 +151,6 @@ public class Manager : MonoBehaviour
   
     void Update()
     {
-		// Restart Game
-        if (Input.GetKey(ReloadScene))
-        {
-            SceneManager.LoadScene("Canyonland");
-        }
 		
 		// Collectible Scores
 		if (ScoreSnails == _snailsToWin)
