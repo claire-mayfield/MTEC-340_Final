@@ -11,6 +11,13 @@ TagManager:
   - Pineapple
   - LargePineapple
   - ShockJump
+  - RemoveText
+  - PressSpaceToJump
+  - ClickToShoot
+  - CollectThings
+  - WatchOut
+  - LookForPineapples
+  - TutorialComplete
   layers:
   - Default
   - TransparentFX
