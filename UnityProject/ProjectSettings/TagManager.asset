@@ -23,6 +23,8 @@ TagManager:
   - IncreaseJumpText
   - JumpIncreaseInstructions
   - NotReady
+  - Star
+  - Snail
   layers:
   - Default
   - TransparentFX

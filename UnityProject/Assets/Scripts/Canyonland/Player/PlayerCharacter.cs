@@ -111,6 +111,12 @@ public class PlayerCharacter : MonoBehaviour
 			
 		}
 		
+		if (other.gameObject.CompareTag("LargePineapple"))
+		{
+			_jumpIncreaseInstructions.text = "You've increased your max lives by 2!";
+			
+		}
+		
 		// Remove instruction text
 		if (other.gameObject.CompareTag("RemoveText"))
 		{
